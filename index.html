@@ -2,15 +2,15 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" type="image/png" href="img/whatsapp.png">
-    <title>WhatsApp Sem Salvar</title>
+    <title>Whatsapp Not Saved</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Integração do Bootstrap -->
+    <!-- IntegraÃ§Ã£o do Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Alterei a cor de fundo para um tom de cinza claro */
-            margin-bottom: 60px; /* Adicionei margem inferior para o rodapé */
+            background-color: #f8f9fa; 
+            margin-bottom: 60px;
         }
 
         .container {
@@ -37,13 +37,13 @@
             margin-top: 20px;
         }
 
-        /* Rodapé */
+        /* RodapÃ© */
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #343a40; /* Cor de fundo do rodapé */
-            color: #ffffff; /* Cor do texto do rodapé */
+            background-color: #343a40; 
+            color: #ffffff; 
             padding: 15px 0;
             text-align: center;
         }
@@ -55,9 +55,9 @@
             }
 
             .btn {
-                padding: 12px; /* aumentei o padding para destacar mais o botão */
-                border-radius: 5px; /* arredondei as bordas */
-                font-size: 16px; /* aumentei um pouco o tamanho da fonte */
+                padding: 12px; 
+                border-radius: 5px; 
+                font-size: 16px; 
             }
         }
     </style>
@@ -67,7 +67,7 @@
         <h1>WhatsApp Sem Salvar</h1>
         <form id="whatsappForm">
             <div class="form-group">
-                <label for="phoneNumber">Número de telefone com DDD (sem espaços):</label>
+                <label for="phoneNumber">NÃºmero de telefone com DDD (sem espaÃ§os):</label>
                 <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Exemplo: 8699991234">
             </div>
             <div class="button-container">
@@ -77,9 +77,9 @@
         </form>
     </div>
 
-    <!-- Rodapé -->
+    <!-- RodapÃ© -->
     <footer>
-        <p>&copy; 2024 WhatsApp Sem Salvar</p>
+        <p>&copy; 2025 WhatsApp Sem Salvar</p>
     </footer>
 
     <!-- Scripts do Bootstrap -->
@@ -93,11 +93,11 @@
             const phoneNumber = document.getElementById('phoneNumber').value;
 
             if (phoneNumber) {
-                // Abre uma nova guia para o WhatsApp Web com o número de telefone
+                // Abre uma nova guia para o WhatsApp Web com o nÃºmero de telefone
                 const whatsappWebURL = `https://web.whatsapp.com/send?phone=55${phoneNumber}`;
                 window.open(whatsappWebURL, '_blank');
             } else {
-                alert('Por favor, insira um número de telefone.');
+                alert('Por favor, insira um nÃºmero de telefone.');
             }
         });
 
@@ -105,11 +105,11 @@
             const phoneNumber = document.getElementById('phoneNumber').value;
 
             if (phoneNumber) {
-                // Abre uma nova guia para o WhatsApp App com o número de telefone
+                // Abre uma nova guia para o WhatsApp App com o nÃºmero de telefone
                 const whatsappAppURL = `https://api.whatsapp.com/send?phone=55${phoneNumber}`;
                 window.open(whatsappAppURL, '_blank');
             } else {
-                alert('Por favor, insira um número de telefone.');
+                alert('Por favor, insira um nÃºmero de telefone.');
             }
         }
     </script>
