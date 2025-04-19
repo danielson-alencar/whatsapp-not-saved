@@ -1,116 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/whatsapp.png">
-    <title>Whatsapp Not Saved</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Integração do Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>WhatsApp Sem Salvar</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #075E54;
+            --whatsapp-light: #DCF8C6;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa; 
-            margin-bottom: 60px;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-
+        
         .container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            flex: 1;
         }
-
-        h1 {
+        
+        .header {
             text-align: center;
+            margin-bottom: 2rem;
         }
-
-        label {
-            margin-bottom: 10px;
+        
+        .header h1 {
+            color: var(--whatsapp-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
-
-        input {
-            padding: 10px;
-            box-sizing: border-box;
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
         }
-
+        
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--whatsapp-green);
+            box-shadow: 0 0 0 0.25rem rgba(37, 211, 102, 0.25);
+        }
+        
+        .btn {
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-success {
+            background-color: var(--whatsapp-green);
+            border-color: var(--whatsapp-green);
+        }
+        
+        .btn-success:hover {
+            background-color: #1da851;
+            border-color: #1da851;
+        }
+        
+        .btn-info {
+            background-color: #34B7F1;
+            border-color: #34B7F1;
+        }
+        
+        .btn-info:hover {
+            background-color: #2a9bd8;
+            border-color: #2a9bd8;
+        }
+        
         .button-container {
-            margin-top: 20px;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
-
-        /* Rodapé */
+        
         footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #343a40; 
-            color: #ffffff; 
-            padding: 15px 0;
+            background-color: var(--whatsapp-dark);
+            color: white;
+            padding: 1rem 0;
             text-align: center;
+            margin-top: auto;
         }
-
-        @media (min-width: 768px) {
+        
+        footer p {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 767.98px) {
             .container {
-                max-width: 80%;
-                margin: 50px auto;
-            }
-
-            .btn {
-                padding: 12px; 
-                border-radius: 5px; 
-                font-size: 16px; 
+                margin: 1.5rem auto;
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>WhatsApp Sem Salvar</h1>
+        <div class="header">
+            <h1><i class="fab fa-whatsapp"></i> WhatsApp Sem Salvar</h1>
+            <p>Envie mensagens sem adicionar o número aos contatos</p>
+        </div>
+        
         <form id="whatsappForm">
-            <div class="form-group">
-                <label for="phoneNumber">Número de telefone com DDD (sem espaços):</label>
-                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Exemplo: 8699991234">
+            <div class="form-group mb-3">
+                <label for="phoneNumber">
+                    <i class="fas fa-phone-alt"></i> Número de telefone com DDD
+                </label>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" 
+                       placeholder="Exemplo: 8699991234" pattern="[0-9]{10,11}" required>
+                <small class="text-muted">Digite apenas números, sem espaços ou caracteres especiais</small>
             </div>
+            
             <div class="button-container">
-                <button type="submit" class="btn btn-success btn-block">WhatsApp Web</button>
-                <button type="button" class="btn btn-info btn-block" onclick="redirectToWhatsAppApp()">WhatsApp App</button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-desktop"></i> WhatsApp Web
+                </button>
+                <button type="button" class="btn btn-info" onclick="redirectToWhatsAppApp()">
+                    <i class="fas fa-mobile-alt"></i> WhatsApp App
+                </button>
             </div>
         </form>
     </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2025 WhatsApp Sem Salvar</p>
+    <footer class="footer">
+        <p>&copy; 2025 WhatsApp Sem Salvar | Todos os direitos reservados</p>
     </footer>
 
-    <!-- Scripts do Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         document.getElementById('whatsappForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const phoneNumber = document.getElementById('phoneNumber').value;
-
-            if (phoneNumber) {
-                // Abre uma nova guia para o WhatsApp Web com o número de telefone
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            
+            if (phoneNumber && /^\d{10,11}$/.test(phoneNumber)) {
                 const whatsappWebURL = `https://web.whatsapp.com/send?phone=55${phoneNumber}`;
                 window.open(whatsappWebURL, '_blank');
             } else {
-                alert('Por favor, insira um número de telefone.');
+                alert('Por favor, insira um número de telefone válido (10 ou 11 dígitos).');
             }
         });
 
         function redirectToWhatsAppApp() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-
-            if (phoneNumber) {
-                // Abre uma nova guia para o WhatsApp App com o número de telefone
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            
+            if (phoneNumber && /^\d{10,11}$/.test(phoneNumber)) {
                 const whatsappAppURL = `https://api.whatsapp.com/send?phone=55${phoneNumber}`;
                 window.open(whatsappAppURL, '_blank');
             } else {
-                alert('Por favor, insira um número de telefone.');
+                alert('Por favor, insira um número de telefone válido (10 ou 11 dígitos).');
             }
         }
     </script>
